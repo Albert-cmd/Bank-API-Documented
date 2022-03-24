@@ -1,0 +1,426 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Api Compte/Clients",
+        "description": "Una api de comptes i clients implementat en laravel amb un servidor mysql.",
+        "contact": {
+            "email": "darius@matulionis.lt"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0",
+        "x-logo": {
+            "url": "https://via.placeholder.com/190x90.png?text=L5-Swagger"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost/M7/pt2a/pt1a/public/index.php/api",
+            "description": "L5 Swagger OpenApi Server"
+        }
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "tags": [
+                    "Inici"
+                ],
+                "description": "Pagina d'inici",
+                "responses": {
+                    "default": {
+                        "description": "Welcome page"
+                    }
+                }
+            }
+        },
+        "/comptes": {
+            "get": {
+                "tags": [
+                    "Comptes"
+                ],
+                "summary": "Veure tots els comptes.",
+                "operationId": "23d8f26f0e106da94bc5ec12af5732c0",
+                "responses": {
+                    "200": {
+                        "description": "Retorna tots els comptes."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/compteById/{id}": {
+            "get": {
+                "tags": [
+                    "Comptes"
+                ],
+                "summary": "Retorna un compte donada una id de compte.",
+                "description": "Retorna un compte donada una id de compte.",
+                "operationId": "compteById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Compte id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna tots els comptes."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/compte/{id}": {
+            "put": {
+                "tags": [
+                    "Comptes"
+                ],
+                "summary": "Actualitza un compte",
+                "description": "Acutasliztza un compte existent",
+                "operationId": "updateCompte",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Compte id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "saldo": {
+                                        "type": "integer"
+                                    },
+                                    "codi": {
+                                        "type": "integer"
+                                    },
+                                    "client_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "S'ha creat el compte."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/addCompte": {
+            "post": {
+                "tags": [
+                    "Comptes"
+                ],
+                "summary": "Afegeix un compte",
+                "description": "Afegeix un compte",
+                "operationId": "postCompte",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "saldo",
+                                    "codi",
+                                    "client_id"
+                                ],
+                                "properties": {
+                                    "saldo": {
+                                        "type": "integer"
+                                    },
+                                    "codi": {
+                                        "type": "integer"
+                                    },
+                                    "client_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "S'ha creat el compte."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/compte/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Comptes"
+                ],
+                "summary": "Elimina un compte donada  una id de compte.",
+                "description": "Elimina un compte donada una id de compte.",
+                "operationId": "deleteCompte",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Compte id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna tots els comptes."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/clients": {
+            "get": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Retorna tots els clients.",
+                "operationId": "a13714176d61a073cdd28a39ccd4580c",
+                "responses": {
+                    "200": {
+                        "description": "Retorna tots els clients."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/clientById/{id}": {
+            "get": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Retorna un client  donada una id de client.",
+                "description": "Retorna un client donada una id de client.",
+                "operationId": "clientById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Client id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna tots els comptes."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/client/{id}": {
+            "put": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Actualitza un client",
+                "description": "Acutasliztza un client existent",
+                "operationId": "updateClient",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Client id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "dni": {
+                                        "type": "text"
+                                    },
+                                    "nom": {
+                                        "type": "text"
+                                    },
+                                    "cognoms": {
+                                        "type": "text"
+                                    },
+                                    "dataN": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "S'ha creat el compte."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/addClient": {
+            "post": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Afegeix un client",
+                "description": "Afegeix un client",
+                "operationId": "postClient",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "dni",
+                                    "nom",
+                                    "cognoms"
+                                ],
+                                "properties": {
+                                    "dni": {
+                                        "type": "text"
+                                    },
+                                    "nom": {
+                                        "type": "text"
+                                    },
+                                    "cognoms": {
+                                        "type": "text"
+                                    },
+                                    "dataN": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "S'ha creat el compte."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/client/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Elimina un client donada  una id de client.",
+                "description": "Elimina un client donada una id de client.",
+                "operationId": "deleteClient",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Client id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna tots els comptes."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
